@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom date input styling */
+input[type="date"] {
+  position: relative;
+  color: #374151;
+  font-weight: 500;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  filter: brightness(0) saturate(100%) invert(47%) sepia(95%) saturate(2392%) hue-rotate(198deg) brightness(98%) contrast(101%);
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(37%) sepia(93%) saturate(3466%) hue-rotate(213deg) brightness(96%) contrast(101%);
+}
+
+input[type="date"]::-webkit-datetime-edit {
+  padding-left: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  padding: 0 0.25rem;
+  color: #6b7280;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+  background-color: transparent;
+  transition: all 0.2s;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+input[type="date"]:focus::-webkit-datetime-edit-month-field,
+input[type="date"]:focus::-webkit-datetime-edit-day-field,
+input[type="date"]:focus::-webkit-datetime-edit-year-field {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field:hover,
+input[type="date"]::-webkit-datetime-edit-day-field:hover,
+input[type="date"]::-webkit-datetime-edit-year-field:hover {
+  background-color: #f3f4f6;
+}
+
+/* Modern select dropdown styling */
+select {
+  background-image: none;
+}
+
+select option {
+  padding: 0.75rem;
+  background-color: white;
+  color: #374151;
+  font-weight: 500;
+}
+
+select option:hover,
+select option:checked {
+  background: linear-gradient(to right, #dbeafe, #bfdbfe);
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* Smooth animations */
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
