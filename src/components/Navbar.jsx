@@ -2,12 +2,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import ProfileModal from "./ProfileModal";
+import ResetPasswordModal from "./ResetPasswordModal";
 
 export default function Navbar() {
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
-  
+  const [showResetPasswordModal, setShowResetPasswordModal] = useState(false);
+
   const logout = () => {
     localStorage.removeItem("token");
     window.location.href = "/login";
@@ -109,9 +111,29 @@ export default function Navbar() {
                       <p className="text-xs text-gray-500">Manage your details</p>
                     </div>
                   </button>
-                  
+
                   <div className="my-1 border-t border-gray-100"></div>
-                  
+
+                  <button
+                    onClick={() => {
+                      setShowDropdown(false);
+                      setShowResetPasswordModal(true);
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-sm text-blue-600 hover:bg-blue-50 flex items-center gap-3 transition-colors group"
+                  >
+                    <div className="w-8 h-8 bg-blue-100 group-hover:bg-blue-200 rounded-lg flex items-center justify-center transition-colors">
+                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium">Reset Password</p>
+                      <p className="text-xs text-blue-500">Change your password</p>
+                    </div>
+                  </button>
+
+                  <div className="my-1 border-t border-gray-100"></div>
+
                   <button
                     onClick={logout}
                     className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 flex items-center gap-3 transition-colors group"
@@ -136,6 +158,11 @@ export default function Navbar() {
       {/* Profile Modal */}
       {showProfileModal && (
         <ProfileModal onClose={() => setShowProfileModal(false)} />
+      )}
+
+      {/* Reset Password Modal */}
+      {showResetPasswordModal && (
+        <ResetPasswordModal onClose={() => setShowResetPasswordModal(false)} />
       )}
     </nav>
   );
