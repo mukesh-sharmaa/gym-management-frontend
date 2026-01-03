@@ -24,6 +24,7 @@ export default function ProfileModal({ onClose }) {
     }
   };
 
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop - Greyed out and inaccessible */}
@@ -107,6 +108,7 @@ export default function ProfileModal({ onClose }) {
                     </div>
                   </div>
                 </div>
+
               </div>
             ) : (
               <div className="text-center py-8 text-gray-500">
